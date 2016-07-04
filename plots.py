@@ -33,8 +33,8 @@ def Plot_Accuracies():
        # axes.hist(subject_accuracy, bins = 10, range = [0.3, 1.3], alpha = 0.5)
     flattenedArray = np.array(all_accuracies).flatten()               
     axes.hist(flattenedArray, bins = 10, range = [-2, 2], alpha = 0.5)
-    flattenedAmp = np.array(ZscoreAmp(ZscoreAmp(saving)).flatten())
-    axes.hist(flattenedAmp, bins = 10, range = [-2, 2], alpha = 0.5)
+   # flattenedAmp = np.array(ZscoreAmp(ZscoreAmp(saving)).flatten())
+    #axes.hist(flattenedAmp, bins = 10, range = [-2, 2], alpha = 0.5)
    
     all_accuracies
     fig2, axes2 = plt.subplots(1)
@@ -49,9 +49,7 @@ def Zscore(subject_scores):
 
 def ZscoreAmp(saving):
     #normalization of 'saving' (signal peaks)
-    svalues =  np.array([(k,)+v for k,v in saving.items()], dtype=[('date', '|O4'), ('high', '<f8'), ('low', '<f8')])
-    for subject_name, ssvep_values in saving.items():
-        return ssvep_values
+    svalues =  np.array([(k,)+v for k,v in saving.items()], dtype=[(str, list)])
     zscoreAmp = ((svalues - svalues.mean())/svalues.std())   
     return np.array(zscoreAmp)
       
